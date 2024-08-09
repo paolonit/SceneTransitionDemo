@@ -1,29 +1,30 @@
-[gd_scene load_steps=11 format=3 uid="uid://dkv05bs2rt8sb"]
+[gd_scene load_steps=12 format=3 uid="uid://dkv05bs2rt8sb"]
 
 [ext_resource type="PackedScene" uid="uid://cljg2rbvdqcii" path="res://player.tscn" id="1_8xgpb"]
 [ext_resource type="Script" path="res://level_1.gd" id="1_icnpu"]
+[ext_resource type="Theme" uid="uid://b0tiw2ghhli3x" path="res://black_font.tres" id="3_lj2vp"]
 
-[sub_resource type="Gradient" id="Gradient_qdys1"]
+[sub_resource type="Gradient" id="Gradient_yubgn"]
 colors = PackedColorArray(0.643137, 0.760784, 0.658824, 1, 0.643137, 0.760784, 0.658824, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_8ywif"]
-gradient = SubResource("Gradient_qdys1")
+gradient = SubResource("Gradient_yubgn")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_23h65"]
 size = Vector2(1148, 194)
 
-[sub_resource type="Gradient" id="Gradient_slp8f"]
+[sub_resource type="Gradient" id="Gradient_r4kdu"]
 colors = PackedColorArray(0.352941, 0.352941, 0.4, 1, 0.352941, 0.352941, 0.4, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_35o4c"]
-gradient = SubResource("Gradient_slp8f")
+gradient = SubResource("Gradient_r4kdu")
 
-[sub_resource type="Gradient" id="Gradient_v7eq5"]
+[sub_resource type="Gradient" id="Gradient_yi517"]
 offsets = PackedFloat32Array(0.00649351, 1)
-colors = PackedColorArray(0.529412, 1, 0.396078, 1, 0.529412, 1, 0.396078, 1)
+colors = PackedColorArray(0.117647, 0.588235, 0.988235, 1, 0.117647, 0.588235, 0.988235, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_1rfhd"]
-gradient = SubResource("Gradient_v7eq5")
+gradient = SubResource("Gradient_yi517")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n5hk0"]
 size = Vector2(119, 128)
@@ -79,6 +80,7 @@ offset_top = 81.0
 offset_right = 555.0
 offset_bottom = 156.0
 scale = Vector2(2.26, 2.26)
+theme = ExtResource("3_lj2vp")
 text = "Level 1
 
 Use Arrow Keys to Move"
@@ -88,6 +90,7 @@ offset_left = 939.0
 offset_top = 236.0
 offset_right = 1140.0
 offset_bottom = 311.0
+theme = ExtResource("3_lj2vp")
 text = "Touch this to go to Level 2
                    |
                    V"

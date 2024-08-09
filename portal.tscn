@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://cf7vr8sd5eqb0"]
+
+[ext_resource type="Script" path="res://portal.gd" id="1_46cui"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u2gf1"]
+size = Vector2(122, 129)
+
+[sub_resource type="Gradient" id="Gradient_v7eq5"]
+offsets = PackedFloat32Array(0.00649351, 1)
+colors = PackedColorArray(0.752941, 0.607843, 0.847059, 1, 0.752941, 0.607843, 0.847059, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xrbuc"]
+gradient = SubResource("Gradient_v7eq5")
+
+[node name="Portal" type="Area2D"]
+script = ExtResource("1_46cui")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, 0.5)
+shape = SubResource("RectangleShape2D_u2gf1")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -55.0
+offset_top = -64.0
+offset_right = 9.0
+scale = Vector2(1.88, 2)
+texture = SubResource("GradientTexture2D_xrbuc")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -153.0
+offset_top = -157.0
+offset_right = 44.0
+offset_bottom = -82.0
+text = "Touch this to go to level 3
+                             |
+                             V"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

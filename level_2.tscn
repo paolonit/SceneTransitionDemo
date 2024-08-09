@@ -1,7 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dlhhky52myfbp"]
+[gd_scene load_steps=16 format=3 uid="uid://dlhhky52myfbp"]
 
 [ext_resource type="Script" path="res://level_2.gd" id="1_11rom"]
 [ext_resource type="PackedScene" uid="uid://cljg2rbvdqcii" path="res://player.tscn" id="1_etjt3"]
+[ext_resource type="Theme" uid="uid://b0tiw2ghhli3x" path="res://black_font.tres" id="3_mu8ww"]
+[ext_resource type="PackedScene" uid="uid://bvam47mj7ymj4" path="res://coin.tscn" id="3_on2aj"]
 
 [sub_resource type="Gradient" id="Gradient_3ujod"]
 colors = PackedColorArray(0.74902, 0.843137, 0.917647, 1, 0.74902, 0.843137, 0.917647, 1)
@@ -19,13 +21,22 @@ colors = PackedColorArray(0.0431373, 0.223529, 0.329412, 1, 0.0431373, 0.223529,
 gradient = SubResource("Gradient_jwop4")
 
 [sub_resource type="Gradient" id="Gradient_d7vcw"]
-colors = PackedColorArray(1, 0.4, 0.388235, 1, 1, 0.4, 0.388235, 1)
+colors = PackedColorArray(0.529412, 1, 0.396078, 1, 0.529412, 1, 0.396078, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_35b2n"]
 gradient = SubResource("Gradient_d7vcw")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m6t43"]
 size = Vector2(119, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_27jup"]
+size = Vector2(247, 39)
+
+[sub_resource type="Gradient" id="Gradient_nldbc"]
+colors = PackedColorArray(0.0431373, 0.223529, 0.329412, 1, 0.0431373, 0.223529, 0.329412, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nxtot"]
+gradient = SubResource("Gradient_nldbc")
 
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_11rom")
@@ -39,7 +50,7 @@ scale = Vector2(18.353, 7.40643)
 texture = SubResource("GradientTexture2D_vcxqm")
 
 [node name="Player" parent="." instance=ExtResource("1_etjt3")]
-position = Vector2(593, 386)
+position = Vector2(347, 385)
 
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(604, 463)
@@ -73,11 +84,12 @@ shape = SubResource("RectangleShape2D_m6t43")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = 511.0
-offset_top = 79.0
-offset_right = 698.0
-offset_bottom = 154.0
+offset_left = 29.9999
+offset_top = 35.0
+offset_right = 217.0
+offset_bottom = 110.0
 scale = Vector2(2.26, 2.26)
+theme = ExtResource("3_mu8ww")
 text = "Level 2"
 
 [node name="Label2" type="Label" parent="CanvasLayer"]
@@ -85,8 +97,63 @@ offset_left = 14.0
 offset_top = 231.0
 offset_right = 268.0
 offset_bottom = 306.0
-text = "Touch this to go to bak to Level 1
+theme = ExtResource("3_mu8ww")
+text = "Touch this to go to back to Level 1
                    |
                    V"
 
+[node name="Label3" type="Label" parent="CanvasLayer"]
+offset_left = 312.0
+offset_top = 19.0
+offset_right = 527.0
+offset_bottom = 94.0
+theme = ExtResource("3_mu8ww")
+text = "Collect this to unlock level 3
+      |
+      V"
+
+[node name="Label4" type="Label" parent="CanvasLayer"]
+offset_left = 666.0
+offset_top = 138.0
+offset_right = 822.0
+offset_bottom = 161.0
+scale = Vector2(2.28, 2.28)
+theme = ExtResource("3_mu8ww")
+text = "Press Space to Jump
+"
+
+[node name="Coin" parent="." instance=ExtResource("3_on2aj")]
+position = Vector2(346, 124)
+
+[node name="Platform1" type="StaticBody2D" parent="."]
+position = Vector2(18, 137)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform1"]
+position = Vector2(618.5, 225.5)
+shape = SubResource("RectangleShape2D_27jup")
+
+[node name="TextureRect" type="TextureRect" parent="Platform1"]
+offset_left = 494.0
+offset_top = 206.0
+offset_right = 558.0
+offset_bottom = 270.0
+scale = Vector2(3.92, 0.6)
+texture = SubResource("GradientTexture2D_nxtot")
+
+[node name="Platform2" type="StaticBody2D" parent="."]
+position = Vector2(-269, -44)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
+position = Vector2(618.5, 225.5)
+shape = SubResource("RectangleShape2D_27jup")
+
+[node name="TextureRect" type="TextureRect" parent="Platform2"]
+offset_left = 494.0
+offset_top = 206.0
+offset_right = 558.0
+offset_bottom = 270.0
+scale = Vector2(3.92, 0.6)
+texture = SubResource("GradientTexture2D_nxtot")
+
 [connection signal="body_entered" from="Exit" to="." method="_on_exit_body_entered"]
+[connection signal="collected" from="Coin" to="." method="_on_coin_collected"]
