@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cf7vr8sd5eqb0"]
+[gd_scene load_steps=6 format=3 uid="uid://cf7vr8sd5eqb0"]
 
 [ext_resource type="Script" path="res://portal.gd" id="1_46cui"]
+[ext_resource type="Theme" uid="uid://b0tiw2ghhli3x" path="res://black_font.tres" id="2_8k3yt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u2gf1"]
 size = Vector2(122, 129)
@@ -31,6 +32,7 @@ offset_left = -153.0
 offset_top = -157.0
 offset_right = 44.0
 offset_bottom = -82.0
+theme = ExtResource("2_8k3yt")
 text = "Touch this to go to level 3
                              |
                              V"
