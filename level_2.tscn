@@ -1,0 +1,92 @@
+[gd_scene load_steps=11 format=3 uid="uid://dlhhky52myfbp"]
+
+[ext_resource type="Script" path="res://level_2.gd" id="1_11rom"]
+[ext_resource type="PackedScene" uid="uid://cljg2rbvdqcii" path="res://player.tscn" id="1_etjt3"]
+
+[sub_resource type="Gradient" id="Gradient_3ujod"]
+colors = PackedColorArray(0.74902, 0.843137, 0.917647, 1, 0.74902, 0.843137, 0.917647, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vcxqm"]
+gradient = SubResource("Gradient_3ujod")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_22usn"]
+size = Vector2(1148, 194)
+
+[sub_resource type="Gradient" id="Gradient_jwop4"]
+colors = PackedColorArray(0.0431373, 0.223529, 0.329412, 1, 0.0431373, 0.223529, 0.329412, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0nnip"]
+gradient = SubResource("Gradient_jwop4")
+
+[sub_resource type="Gradient" id="Gradient_d7vcw"]
+colors = PackedColorArray(1, 0.4, 0.388235, 1, 1, 0.4, 0.388235, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_35b2n"]
+gradient = SubResource("Gradient_d7vcw")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m6t43"]
+size = Vector2(119, 128)
+
+[node name="Level2" type="Node2D"]
+script = ExtResource("1_11rom")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_left = -10.0
+offset_top = -8.0
+offset_right = 54.0
+offset_bottom = 56.0
+scale = Vector2(18.353, 7.40643)
+texture = SubResource("GradientTexture2D_vcxqm")
+
+[node name="Player" parent="." instance=ExtResource("1_etjt3")]
+position = Vector2(593, 386)
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(604, 463)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(-29, 87)
+shape = SubResource("RectangleShape2D_22usn")
+
+[node name="TextureRect" type="TextureRect" parent="Ground"]
+offset_left = -619.0
+offset_top = -10.0
+offset_right = -555.0
+offset_bottom = 54.0
+scale = Vector2(18.4421, 3.20889)
+texture = SubResource("GradientTexture2D_0nnip")
+
+[node name="Exit" type="Area2D" parent="."]
+position = Vector2(79, 387)
+
+[node name="TextureRect" type="TextureRect" parent="Exit"]
+offset_left = -55.0
+offset_top = -64.0
+offset_right = 9.0
+scale = Vector2(1.88, 2)
+texture = SubResource("GradientTexture2D_35b2n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
+position = Vector2(5.5, 0)
+shape = SubResource("RectangleShape2D_m6t43")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 511.0
+offset_top = 79.0
+offset_right = 698.0
+offset_bottom = 154.0
+scale = Vector2(2.26, 2.26)
+text = "Level 2"
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+offset_left = 14.0
+offset_top = 231.0
+offset_right = 268.0
+offset_bottom = 306.0
+text = "Touch this to go to bak to Level 1
+                   |
+                   V"
+
+[connection signal="body_entered" from="Exit" to="." method="_on_exit_body_entered"]
